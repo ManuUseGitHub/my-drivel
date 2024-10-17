@@ -1,0 +1,14 @@
+<ul>
+  <li *ngFor="let log of logs">
+    {{log.timestamp |date}} - {{log.destination}} - {{log.distance}}km 
+    <button (click)="deleteLog(log.id)">X</button>
+    <button (click)="edit(log)">Edit</button>
+  </li>
+</ul>
+<form>
+  <input type="date" [(ngModel)]="newLog.timestamp" name="timestamp" placeholder="timestamp" >
+  <input type="text" [(ngModel)]="newLog.destination" name="destination" placeholder="destination">
+  <input type="number" [(ngModel)]="newLog.odoStart" name="odoStart" placeholder="start (km)" >
+  <input type="number" [(ngModel)]="newLog.odoEnd" name="odoEnd" placeholder="end (km)" >
+  <button (click)="save()">{{ newLog.id ? 'Save' : 'Add' }}</button>
+</form>
